@@ -1,0 +1,1746 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Castel & Hall — Instagram Strategy Kit</title>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&family=Lora:ital,wght@0,600;1,400&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #f4f6f9;
+    --bg2: #ebeef3;
+    --surface: #ffffff;
+    --surface2: #f9fafc;
+    --navy: #0e1f3d;
+    --navy-mid: #1a3460;
+    --navy-light: #e8edf5;
+    --crimson: #c0182f;
+    --crimson-light: #fde8eb;
+    --blue: #1a4fa8;
+    --blue-light: #dce8fb;
+    --green: #1e4976;
+    --green-light: #dbeafe;
+    --orange: #c96a00;
+    --orange-light: #fef0dc;
+    --text: #0e1f3d;
+    --text2: #4a5568;
+    --text3: #8a97aa;
+    --border: #dde2ea;
+    --border2: #c8d0db;
+    --shadow: 0 1px 3px rgba(14,31,61,0.08), 0 4px 12px rgba(14,31,61,0.05);
+    --shadow-md: 0 4px 16px rgba(14,31,61,0.12), 0 1px 4px rgba(14,31,61,0.06);
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Montserrat', sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    min-height: 100vh;
+    font-size: 14px;
+    line-height: 1.6;
+  }
+
+  /* ── HEADER ── */
+  header {
+    background: var(--navy);
+    padding: 1.2rem 2rem;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    box-shadow: 0 2px 8px rgba(14,31,61,0.25);
+  }
+  .logo-area h1 {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1rem;
+    font-weight: 800;
+    color: #fff;
+    letter-spacing: 0.01em;
+    text-transform: uppercase;
+  }
+  .logo-area h1 span { color: var(--crimson); }
+  .logo-area p {
+    font-size: 0.65rem;
+    color: rgba(255,255,255,0.45);
+    margin-top: 1px;
+    font-family: 'JetBrains Mono', monospace;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  /* ── TABS ── */
+  .tabs { display: flex; gap: 0.35rem; flex-wrap: wrap; }
+  .tab-btn {
+    background: rgba(255,255,255,0.07);
+    border: 1px solid rgba(255,255,255,0.12);
+    color: rgba(255,255,255,0.6);
+    padding: 0.4rem 0.9rem;
+    border-radius: 6px;
+    cursor: pointer;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 0.72rem;
+    font-weight: 600;
+    transition: all 0.18s;
+    white-space: nowrap;
+    letter-spacing: 0.02em;
+  }
+  .tab-btn:hover { background: rgba(255,255,255,0.14); color: #fff; }
+  .tab-btn.active { background: var(--crimson); border-color: var(--crimson); color: #fff; }
+
+  /* ── MAIN ── */
+  main { max-width: 1080px; margin: 0 auto; padding: 2rem 1.5rem 5rem; }
+  .section { display: none; }
+  .section.active { display: block; }
+
+  /* ── SECTION HEADER ── */
+  .section-title {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1.6rem;
+    font-weight: 800;
+    color: var(--navy);
+    margin-bottom: 0.3rem;
+    letter-spacing: -0.01em;
+  }
+  .section-title span { color: var(--crimson); }
+  .section-subtitle {
+    color: var(--text2);
+    font-size: 0.85rem;
+    margin-bottom: 2rem;
+    line-height: 1.7;
+    max-width: 700px;
+  }
+
+  /* ── CARDS ── */
+  .card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 1.4rem;
+    margin-bottom: 1rem;
+    box-shadow: var(--shadow);
+  }
+  .card-header { display: flex; align-items: flex-start; gap: 0.8rem; margin-bottom: 0.9rem; }
+  .pill {
+    display: inline-block;
+    padding: 0.18rem 0.65rem;
+    border-radius: 4px;
+    font-size: 0.62rem;
+    font-weight: 700;
+    font-family: 'JetBrains Mono', monospace;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    white-space: nowrap;
+  }
+  .pill-gold { background: var(--navy-light); color: var(--navy); border: 1px solid var(--border2); }
+  .pill-green { background: var(--green-light); color: var(--green); }
+  .pill-blue { background: var(--blue-light); color: var(--blue); }
+  .pill-red { background: var(--crimson-light); color: var(--crimson); }
+  .pill-gray { background: var(--bg2); color: var(--text3); }
+  .card h3 { font-size: 1rem; font-weight: 700; color: var(--navy); line-height: 1.35; }
+  .card p { color: var(--text2); font-size: 0.84rem; line-height: 1.75; margin-top: 0.45rem; }
+
+  /* ── PILLAR GRID ── */
+  .pillar-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px,1fr)); gap: 1rem; margin-bottom: 2rem; }
+  .pillar-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 1.3rem;
+    border-top: 3px solid var(--navy);
+    box-shadow: var(--shadow);
+    transition: transform 0.18s, box-shadow 0.18s;
+  }
+  .pillar-card:hover { transform: translateY(-2px); box-shadow: var(--shadow-md); }
+  .pillar-card.blue-top { border-top-color: var(--blue); }
+  .pillar-card.green-top { border-top-color: var(--green); }
+  .pillar-card.red-top { border-top-color: var(--orange); }
+  .pillar-card.crimson-top { border-top-color: var(--crimson); }
+  .pillar-num { font-family:'JetBrains Mono',monospace; font-size:0.62rem; color:var(--text3); letter-spacing:0.1em; margin-bottom:0.5rem; text-transform:uppercase; }
+  .pillar-card h3 { font-size:0.95rem; font-weight:700; color:var(--navy); margin-bottom:0.5rem; }
+  .pillar-card .sub { font-size:0.75rem; color:var(--text3); margin-bottom:0.4rem; font-style:italic; }
+  .pillar-card ul { list-style:none; padding:0; }
+  .pillar-card ul li { font-size:0.8rem; color:var(--text2); padding:0.22rem 0 0.22rem 1rem; border-bottom:1px solid var(--border); position:relative; }
+  .pillar-card ul li:last-child { border-bottom:none; }
+  .pillar-card ul li::before { content:"→"; position:absolute; left:0; color:var(--crimson); font-size:0.7rem; top:0.25rem; }
+
+  /* ── SCRIPT BOX ── */
+  .script-box {
+    background: var(--navy);
+    border-radius: 8px;
+    padding: 1.2rem 1.4rem;
+    margin: 0.8rem 0;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.78rem;
+    line-height: 1.9;
+    color: #c8d8f0;
+    white-space: pre-wrap;
+  }
+  .script-label { font-family:'JetBrains Mono',monospace; font-size:0.62rem; letter-spacing:0.1em; text-transform:uppercase; color:var(--crimson); margin-bottom:0.35rem; font-weight:600; }
+  .script-box .bracket { color: #7eb3f7; font-weight:500; }
+  .script-box .hook { color: #fbbf24; font-weight:600; }
+
+  /* ── HOOKS TABLE ── */
+  .hooks-table { width:100%; border-collapse:collapse; font-size:0.82rem; margin-bottom:1.5rem; }
+  .hooks-table th { background:var(--navy); color:#fff; padding:0.7rem 1rem; text-align:left; font-family:'JetBrains Mono',monospace; font-size:0.65rem; letter-spacing:0.07em; text-transform:uppercase; }
+  .hooks-table th:first-child { border-radius:8px 0 0 0; }
+  .hooks-table th:last-child { border-radius:0 8px 0 0; }
+  .hooks-table td { padding:0.8rem 1rem; border-bottom:1px solid var(--border); color:var(--text2); vertical-align:top; line-height:1.5; background:var(--surface); }
+  .hooks-table tr:hover td { background:var(--bg2); }
+  .hooks-table td:first-child { color:var(--navy); font-weight:600; }
+  .hooks-table td:last-child { color:var(--blue); font-size:0.72rem; font-family:'JetBrains Mono',monospace; font-weight:500; }
+
+  /* ── STATS ── */
+  .stat-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(180px,1fr)); gap:1rem; margin-bottom:2rem; }
+  .stat-box { background:var(--surface); border:1px solid var(--border); border-radius:10px; padding:1.2rem; text-align:center; box-shadow:var(--shadow); }
+  .stat-num { font-family:'Montserrat',sans-serif; font-size:2rem; font-weight:800; color:var(--navy); display:block; line-height:1; margin-bottom:0.3rem; }
+  .stat-label { font-size:0.73rem; color:var(--text2); line-height:1.4; }
+
+  /* ── ALERT / TIP ── */
+  .alert { background:var(--crimson-light); border:1px solid rgba(192,24,47,0.2); border-left:3px solid var(--crimson); border-radius:8px; padding:0.9rem 1.1rem; margin-bottom:1rem; font-size:0.83rem; color:#7a0e1e; line-height:1.65; }
+  .alert strong { color:var(--crimson); }
+  .tip { background:var(--green-light); border:1px solid rgba(30,73,118,0.2); border-left:3px solid var(--green); border-radius:8px; padding:0.9rem 1.1rem; margin-bottom:1rem; font-size:0.83rem; color:#1e3a5f; line-height:1.65; }
+  .tip strong { color:var(--green); }
+
+  /* ── DIVIDER ── */
+  .divider { border:none; border-top:1px solid var(--border); margin:1.2rem 0; }
+
+  /* ── LANG TOGGLE ── */
+  .lang-toggle { display:flex; gap:0.4rem; margin-bottom:1.4rem; }
+  .lang-btn { padding:0.38rem 1rem; border-radius:6px; border:1px solid var(--border2); background:var(--surface); color:var(--text2); cursor:pointer; font-size:0.75rem; font-family:'Montserrat',sans-serif; font-weight:600; transition:all 0.18s; }
+  .lang-btn:hover { border-color:var(--navy); color:var(--navy); }
+  .lang-btn.active { background:var(--navy); color:#fff; border-color:var(--navy); }
+  .lang-content { display:none; }
+  .lang-content.active { display:block; }
+
+  /* ── IDEAS LIST ── */
+  .ideas-list { list-style:none; padding:0; }
+  .ideas-list li { display:flex; gap:1rem; align-items:flex-start; padding:0.8rem 0; border-bottom:1px solid var(--border); }
+  .ideas-list li:last-child { border-bottom:none; }
+  .idea-num { font-family:'JetBrains Mono',monospace; font-size:0.7rem; color:var(--crimson); min-width:2rem; padding-top:0.1rem; font-weight:600; }
+  .idea-content h4 { font-size:0.88rem; color:var(--navy); font-weight:700; margin-bottom:0.15rem; }
+  .idea-content p { font-size:0.78rem; color:var(--text2); line-height:1.5; }
+  .idea-tags { display:flex; gap:0.4rem; flex-wrap:wrap; margin-top:0.35rem; }
+
+  /* ── LEGEND ── */
+  .legend-item { display:flex; align-items:center; gap:0.4rem; font-size:0.74rem; color:var(--text2); font-weight:500; }
+  .legend-dot { width:10px; height:10px; border-radius:3px; }
+
+  /* ── POST ROWS (calendar) ── */
+  .post-row {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 0.85rem 1rem;
+    display: flex;
+    align-items: center;
+    gap: 0.9rem;
+    cursor: pointer;
+    transition: box-shadow 0.18s, border-color 0.18s;
+    box-shadow: var(--shadow);
+  }
+  .post-row:hover { border-color: var(--navy); box-shadow: var(--shadow-md); }
+  .post-row.has-file { border-left: 3px solid var(--green); }
+  .post-day-badge { font-family:'JetBrains Mono',monospace; font-size:0.68rem; color:var(--text3); min-width:3rem; text-align:center; line-height:1.4; }
+  .post-row-format { padding:0.15rem 0.55rem; border-radius:4px; font-size:0.62rem; font-weight:700; font-family:'JetBrains Mono',monospace; white-space:nowrap; letter-spacing:0.03em; }
+  .fmt-reel-pt { background:var(--crimson-light); color:var(--crimson); }
+  .fmt-reel-en { background:var(--blue-light); color:var(--blue); }
+  .fmt-carr-pt { background:var(--green-light); color:var(--green); }
+  .fmt-carr-en { background:var(--orange-light); color:var(--orange); }
+  .post-row-title { flex:1; font-size:0.86rem; color:var(--navy); font-weight:600; line-height:1.3; }
+  .post-row-hook { font-size:0.74rem; color:var(--text2); line-height:1.4; margin-top:0.1rem; }
+  .post-row-status { font-size:0.68rem; font-family:'JetBrains Mono',monospace; white-space:nowrap; font-weight:600; }
+
+  /* ── STATUS OPTS ── */
+  .status-opt { background:var(--bg2); border:1px solid var(--border2); color:var(--text2); padding:0.3rem 0.7rem; border-radius:100px; cursor:pointer; font-size:0.74rem; font-family:'Montserrat',sans-serif; font-weight:600; transition:all 0.15s; }
+  .status-opt:hover { border-color:var(--navy); color:var(--navy); }
+  .status-opt.selected { background:var(--navy); border-color:var(--navy); color:#fff; }
+
+  @media (max-width:700px) {
+    header { flex-direction:column; align-items:flex-start; }
+    .tabs { gap:0.25rem; }
+    .tab-btn { font-size:0.67rem; padding:0.35rem 0.65rem; }
+    .post-row-hook { display:none; }
+  }
+</style>
+
+</head>
+<body style="visibility:hidden">
+<script>
+  // ── SESSION GUARD ─────────────────────────────────────────
+  (function() {
+    try {
+      const session = sessionStorage.getItem('ch_session');
+      if (!session) { window.location.replace('login.html'); throw ''; }
+      const s = JSON.parse(session);
+      if (!s.user || !s.role) { window.location.replace('login.html'); throw ''; }
+      window.__chUser = s.user;
+      window.__chRole = s.role;
+      document.body.style.visibility = 'visible';
+    } catch(e) {
+      document.body.style.visibility = 'hidden';
+    }
+  })();
+</script>
+
+<header>
+  <div class="logo-area">
+    <h1>Castel <span>&</span> Hall, LLP</h1>
+    <p>Instagram Strategy Kit · 2025–2026</p>
+  </div>
+  <nav class="tabs">
+    <button class="tab-btn active" onclick="showTab('overview')">Visão Geral</button>
+    <button class="tab-btn" onclick="showTab('pillars')">Pilares</button>
+    <button class="tab-btn" onclick="showTab('hooks')">Ganchos</button>
+    <button class="tab-btn" onclick="showTab('scripts')">Roteiros</button>
+    <button class="tab-btn" onclick="showTab('calendar')">Calendário</button>
+    <button class="tab-btn" onclick="showTab('benchmarks')">Benchmarks</button>
+    <button class="tab-btn" onclick="showTab('rules')">Bar Rules MA</button>
+    <button class="tab-btn" onclick="showTab('approved')">✅ Aprovados</button>
+    <button class="tab-btn" onclick="doLogout()" style="margin-left:0.5rem;background:rgba(192,24,47,0.15);border-color:rgba(192,24,47,0.3);color:#ff8090;">⎋ Sair</button>
+  </nav>
+</header>
+
+<main>
+
+  <!-- ══════════════════════════════════════════════
+       TAB 1: VISÃO GERAL
+  ══════════════════════════════════════════════ -->
+  <section id="overview" class="section active">
+    <h2 class="section-title">Visão Geral Estratégica</h2>
+    <p class="section-subtitle">Diagnóstico do perfil e direcionamento para os dois perfis: português (BR) e inglês (EN)</p>
+
+    <div class="alert">
+      <strong>⚠️ Ação urgente antes de postar qualquer coisa:</strong> O perfil atual não tem padrão de idioma definido. Isso confunde o algoritmo e o público. A primeira tarefa é definir identidade visual consistente e bio otimizada para cada perfil separado.
+    </div>
+
+    <div class="pillar-grid">
+      <div class="pillar-card">
+        <div class="pillar-num">PERFIL 01</div>
+        <h3>🇧🇷 Português — Comunidade Brasileira</h3>
+        <p class="sub">Handle sugerido: @castellhallbr ou @castellhall.br</p>
+        <ul>
+          <li>Foco: Personal Injury + Imigração</li>
+          <li>Tom: próximo, educativo, protetor</li>
+          <li>Formato dominante: Reels curtos + Carrossel</li>
+          <li>Público: brasileiros em MA sem certeza dos próprios direitos</li>
+          <li>Diferencial: advogado fala português, entende a cultura</li>
+        </ul>
+      </div>
+      <div class="pillar-card blue-top">
+        <div class="pillar-num">PERFIL 02</div>
+        <h3>🇺🇸 English — American + Hispanic Community</h3>
+        <p class="sub">Handle sugerido: @castellhalllaw ou @castellhalllp</p>
+        <ul>
+          <li>Focus: Personal Injury education + Immigration rights</li>
+          <li>Tone: confident, informative, accessible</li>
+          <li>Dominant format: Reels + Carousels</li>
+          <li>Audience: immigrants who consume content in English</li>
+          <li>Differentiator: multilingual firm, community-rooted</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="tip">
+      <strong>✅ Por que dois perfis separados e não um bilíngue?</strong> O algoritmo do Instagram distribui conteúdo por audiência. Um perfil com posts em português e inglês alternados "confunde" o sistema sobre para quem distribuir o conteúdo. Perfis segmentados por idioma crescem até 2x mais rápido no início porque o algoritmo consegue identificar e expandir o público correto.
+    </div>
+
+    <div class="card">
+      <div class="card-header">
+        <span class="pill pill-gold">POSICIONAMENTO</span>
+      </div>
+      <h3>A frase que resume o diferencial da Castel &amp; Hall</h3>
+      <p style="margin-top: 0.8rem; color: var(--white); font-size: 1rem; line-height: 1.7;">
+        <em>"Você não precisa entender o sistema jurídico americano. Nós entendemos por você — e falamos sua língua."</em>
+      </p>
+      <p>Esse é o gancho emocional central. A maioria dos imigrantes não busca um advogado porque tem medo, não entende o processo, ou acha que "não tem direito" por ser imigrante. Quebrar esse medo é a missão do conteúdo.</p>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════════
+       TAB 2: PILARES DE CONTEÚDO
+  ══════════════════════════════════════════════ -->
+  <section id="pillars" class="section">
+    <h2 class="section-title">Pilares de Conteúdo</h2>
+    <p class="section-subtitle">Cada perfil gira em torno de 4 pilares. A proporção recomendada está indicada em cada um.</p>
+
+    <div class="lang-toggle">
+      <button class="lang-btn active" onclick="showLang('pt')">🇧🇷 Português</button>
+      <button class="lang-btn" onclick="showLang('en')">🇺🇸 English</button>
+    </div>
+
+    <div id="lang-pt" class="lang-content active">
+      <div class="pillar-grid">
+        <div class="pillar-card">
+          <div class="pillar-num">PILAR 01 · 35%</div>
+          <h3>Educação de Direitos</h3>
+          <p class="sub">"Você sabia que tem direito a..."</p>
+          <ul>
+            <li>Acidente de carro: o que fazer nos primeiros 10 min</li>
+            <li>Você não precisa ser cidadão para processar</li>
+            <li>Tipos de indenização: dor, salário perdido, médico</li>
+            <li>Acidente no trabalho: workers' comp explicado</li>
+            <li>Slip & fall: quando o dono do lugar é responsável</li>
+            <li>Acidente de bicicleta ou pedestre: seus direitos</li>
+          </ul>
+        </div>
+        <div class="pillar-card green-top">
+          <div class="pillar-num">PILAR 02 · 25%</div>
+          <h3>Humanização do Escritório</h3>
+          <p class="sub">"Conheça as pessoas por trás da lei"</p>
+          <ul>
+            <li>Advogado responde dúvida real de seguidor</li>
+            <li>"Um dia no escritório" (bastidores)</li>
+            <li>História de cliente (com autorização, sem detalhes)</li>
+            <li>Por que você escolheu advocacia?</li>
+            <li>Equipe fala sua língua (mostrar diversidade)</li>
+            <li>Visita às sedes Framingham / Woburn</li>
+          </ul>
+        </div>
+        <div class="pillar-card blue-top">
+          <div class="pillar-num">PILAR 03 · 25%</div>
+          <h3>Imigração &amp; Comunidade</h3>
+          <p class="sub">"Navegar nos EUA sendo imigrante"</p>
+          <ul>
+            <li>Mitos sobre direitos de imigrantes</li>
+            <li>DACA, TPS, Green Card: o que mudou</li>
+            <li>O que fazer se ICE bater na sua porta</li>
+            <li>Diferença entre visto de trabalho e green card</li>
+            <li>Processo de naturalização: passo a passo</li>
+            <li>Recurso de deportação: ainda dá tempo?</li>
+          </ul>
+        </div>
+        <div class="pillar-card red-top">
+          <div class="pillar-num">PILAR 04 · 15%</div>
+          <h3>Prova Social &amp; Autoridade</h3>
+          <p class="sub">"Por que confiar na Castel &amp; Hall"</p>
+          <ul>
+            <li>Depoimento de cliente (vídeo curto)</li>
+            <li>Resultado de caso (sem valores específicos)</li>
+            <li>Prêmio / reconhecimento recebido</li>
+            <li>Evento comunitário que o escritório apoiou</li>
+            <li>"Consulta gratuita — como funciona"</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div id="lang-en" class="lang-content">
+      <div class="pillar-grid">
+        <div class="pillar-card">
+          <div class="pillar-num">PILLAR 01 · 35%</div>
+          <h3>Rights Education</h3>
+          <p class="sub">"Did you know you have the right to..."</p>
+          <ul>
+            <li>Car accident: what to do in the first 10 minutes</li>
+            <li>You don't need to be a citizen to file a claim</li>
+            <li>Types of compensation: pain, lost wages, medical</li>
+            <li>Workplace accident & workers' comp explained</li>
+            <li>Slip & fall: when the property owner is liable</li>
+            <li>Bicycle / pedestrian accidents: your rights</li>
+          </ul>
+        </div>
+        <div class="pillar-card green-top">
+          <div class="pillar-num">PILLAR 02 · 25%</div>
+          <h3>Humanizing the Firm</h3>
+          <p class="sub">"The people behind the law"</p>
+          <ul>
+            <li>Attorney answers a real follower question</li>
+            <li>"Day in the life" behind the scenes</li>
+            <li>Client story (with permission, no case details)</li>
+            <li>Why did you choose law?</li>
+            <li>Team speaks your language (show diversity)</li>
+            <li>Inside the Framingham / Woburn offices</li>
+          </ul>
+        </div>
+        <div class="pillar-card blue-top">
+          <div class="pillar-num">PILLAR 03 · 25%</div>
+          <h3>Immigration &amp; Community</h3>
+          <p class="sub">"Navigating the US as an immigrant"</p>
+          <ul>
+            <li>Myths about immigrant rights in America</li>
+            <li>DACA, TPS, Green Card: what's changed</li>
+            <li>What to do if ICE knocks on your door</li>
+            <li>Work visa vs. green card: what's the difference</li>
+            <li>Naturalization process: step by step</li>
+            <li>Deportation appeal: is it too late?</li>
+          </ul>
+        </div>
+        <div class="pillar-card red-top">
+          <div class="pillar-num">PILLAR 04 · 15%</div>
+          <h3>Social Proof &amp; Authority</h3>
+          <p class="sub">"Why trust Castel &amp; Hall"</p>
+          <ul>
+            <li>Client testimonial (short video)</li>
+            <li>Case outcome (no specific values)</li>
+            <li>Award / recognition received</li>
+            <li>Community event the firm supported</li>
+            <li>"Free consultation — how it works"</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════════
+       TAB 3: GANCHOS / HOOKS
+  ══════════════════════════════════════════════ -->
+  <section id="hooks" class="section">
+    <h2 class="section-title">Ganchos de Alta Performance</h2>
+    <p class="section-subtitle">Os primeiros 3 segundos do Reel ou a primeira linha do carrossel determinam se o conteúdo vai ou não performar. <strong style="color:var(--crimson)">Clique em qualquer gancho para editar.</strong> As alterações são salvas automaticamente.</p>
+
+    <div class="lang-toggle">
+      <button class="lang-btn active" onclick="showHookLang('hpt')">🇧🇷 Português</button>
+      <button class="lang-btn" onclick="showHookLang('hen')">🇺🇸 English</button>
+    </div>
+
+    <div id="hook-hpt" class="lang-content active">
+      <table class="hooks-table">
+        <thead>
+          <tr>
+            <th style="width:42%">Gancho (primeiras palavras) <span style="font-weight:400;opacity:0.7;font-size:0.6rem">✏️ editável</span></th>
+            <th>Por que funciona</th>
+            <th style="width:14%">Formato ideal</th>
+          </tr>
+        </thead>
+        <tbody id="hooks-pt-body">
+          <tr>
+            <td class="hook-cell" contenteditable="true" data-hook-id="pt-0">"Se você sofreu um acidente nos EUA, para TUDO e vê isso."</td>
+            <td>Comando direto + urgência + relevância imediata</td>
+            <td>Reel</td>
+          </tr>
+          <tr>
+            <td class="hook-cell" contenteditable="true" data-hook-id="pt-1">"Você sabia que imigrante TAMBÉM tem direito a indenização?"</td>
+            <td>Quebra crença + pergunta retórica + palavra-chave "imigrante"</td>
+            <td>Carrossel</td>
+          </tr>
+          <tr>
+            <td class="hook-cell" contenteditable="true" data-hook-id="pt-2">"O que a maioria das pessoas faz errado depois de um acidente de carro"</td>
+            <td>FOMO (medo de errar) + curiosidade</td>
+            <td>Reel / Carrossel</td>
+          </tr>
+          <tr>
+            <td class="hook-cell" contenteditable="true" data-hook-id="pt-3">"Eu era imigrante sem documentos e recebi indenização. Veja como."</td>
+            <td>História real / prova social + identificação</td>
+            <td>Reel com advogado</td>
+          </tr>
+          <tr>
+            <td class="hook-cell" contenteditable="true" data-hook-id="pt-4">"3 coisas que o seguro não quer que você saiba"</td>
+            <td>Número + "segredo revelado" + antagonista (seguro)</td>
+            <td>Carrossel</td>
+          </tr>
+          <tr>
+            <td class="hook-cell" contenteditable="true" data-hook-id="pt-5">"Isso aconteceu com um cliente nosso semana passada..."</td>
+            <td>Storytelling + senso de recência + curiosidade</td>
+            <td>Reel com advogado</td>
+          </tr>
+          <tr>
+            <td class="hook-cell" contenteditable="true" data-hook-id="pt-6">"Quantos anos você mora nos EUA e nunca soube desse direito?"</td>
+            <td>Pergunta que causa identificação + culpa leve</td>
+            <td>Carrossel</td>
+          </tr>
+          <tr>
+            <td class="hook-cell" contenteditable="true" data-hook-id="pt-7">"ERRO FATAL que pode zerar sua indenização:"</td>
+            <td>FOMO extremo + palavra "fatal" + dois pontos criam suspense</td>
+            <td>Reel</td>
+          </tr>
+        </tbody>
+      </table>
+      <div style="display:flex;justify-content:flex-end;gap:0.6rem;margin-top:0.5rem;">
+        <button onclick="addHookRow('pt')" style="background:var(--navy);color:#fff;border:none;border-radius:6px;padding:0.4rem 0.9rem;font-size:0.75rem;font-weight:600;font-family:'Montserrat',sans-serif;cursor:pointer;">+ Adicionar gancho</button>
+        <button onclick="resetHooks('pt')" style="background:transparent;color:var(--text3);border:1px solid var(--border2);border-radius:6px;padding:0.4rem 0.9rem;font-size:0.75rem;font-weight:600;font-family:'Montserrat',sans-serif;cursor:pointer;">↺ Restaurar originais</button>
+      </div>
+    </div>
+
+    <div id="hook-hen" class="lang-content">
+      <table class="hooks-table">
+        <thead>
+          <tr>
+            <th style="width:42%">Hook (first words) <span style="font-weight:400;opacity:0.7;font-size:0.6rem">✏️ editable</span></th>
+            <th>Why it works</th>
+            <th style="width:14%">Best format</th>
+          </tr>
+        </thead>
+        <tbody id="hooks-en-body">
+          <tr>
+            <td class="hook-cell" contenteditable="true" data-hook-id="en-0">"If you were injured in Massachusetts, stop and watch this."</td>
+            <td>Direct command + urgency + location relevance</td>
+            <td>Reel</td>
+          </tr>
+          <tr>
+            <td class="hook-cell" contenteditable="true" data-hook-id="en-1">"Most immigrants don't know they can sue — even without a green card."</td>
+            <td>Myth-busting + audience identification</td>
+            <td>Carousel</td>
+          </tr>
+          <tr>
+            <td class="hook-cell" contenteditable="true" data-hook-id="en-2">"The biggest mistake people make after a car accident"</td>
+            <td>FOMO + curiosity gap</td>
+            <td>Reel / Carousel</td>
+          </tr>
+          <tr>
+            <td class="hook-cell" contenteditable="true" data-hook-id="en-3">"3 things the insurance company hopes you never find out"</td>
+            <td>Number + secret reveal + antagonist framing</td>
+            <td>Carousel</td>
+          </tr>
+          <tr>
+            <td class="hook-cell" contenteditable="true" data-hook-id="en-4">"This happened to one of our clients last week..."</td>
+            <td>Storytelling + recency + curiosity</td>
+            <td>Reel with attorney</td>
+          </tr>
+          <tr>
+            <td class="hook-cell" contenteditable="true" data-hook-id="en-5">"You were hurt at work. Here's exactly what to do next."</td>
+            <td>Addresses specific painful situation + immediate utility</td>
+            <td>Carousel</td>
+          </tr>
+          <tr>
+            <td class="hook-cell" contenteditable="true" data-hook-id="en-6">"ICE knocked on their door. Here's what we told them to do."</td>
+            <td>High-stakes narrative + community protection</td>
+            <td>Reel</td>
+          </tr>
+          <tr>
+            <td class="hook-cell" contenteditable="true" data-hook-id="en-7">"The one call that can change everything after an accident"</td>
+            <td>Transformation promise + low commitment ask (just a call)</td>
+            <td>Reel with attorney</td>
+          </tr>
+        </tbody>
+      </table>
+      <div style="display:flex;justify-content:flex-end;gap:0.6rem;margin-top:0.5rem;">
+        <button onclick="addHookRow('en')" style="background:var(--navy);color:#fff;border:none;border-radius:6px;padding:0.4rem 0.9rem;font-size:0.75rem;font-weight:600;font-family:'Montserrat',sans-serif;cursor:pointer;">+ Add hook</button>
+        <button onclick="resetHooks('en')" style="background:transparent;color:var(--text3);border:1px solid var(--border2);border-radius:6px;padding:0.4rem 0.9rem;font-size:0.75rem;font-weight:600;font-family:'Montserrat',sans-serif;cursor:pointer;">↺ Reset to originals</button>
+      </div>
+    </div>
+
+    <div class="tip" style="margin-top:1.2rem;">
+      <strong>✅ Regra dos 3 segundos no Reel:</strong> O algoritmo do Instagram mede "watch time" — quantas pessoas assistem além dos 3 primeiros segundos. O gancho precisa aparecer visualmente (texto na tela) E em áudio (advogado falando) simultaneamente. Nunca comece um Reel com logo ou música de abertura — isso mata o alcance.
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════════
+       TAB 4: ROTEIROS
+  ══════════════════════════════════════════════ -->
+  <section id="scripts" class="section">
+    <h2 class="section-title">Roteiros Prontos</h2>
+    <p class="section-subtitle">Clique em qualquer parte do roteiro para editar. Deixe comentários e marque aprovação antes de enviar para gravação.</p>
+
+    <div class="lang-toggle">
+      <button class="lang-btn active" onclick="showScriptLang('spt')">🇧🇷 Português</button>
+      <button class="lang-btn" onclick="showScriptLang('sen')">🇺🇸 English</button>
+    </div>
+
+    <!-- ── PT ── -->
+    <div id="script-spt" class="lang-content active">
+
+      <div class="card script-card" data-script-id="spt-1">
+        <div style="display:flex;align-items:flex-start;justify-content:space-between;gap:1rem;flex-wrap:wrap;margin-bottom:0.7rem;">
+          <div>
+            <span class="pill pill-gold">ROTEIRO 01 — REEL · 45–60 seg</span>
+            <h3 style="margin-top:0.5rem" class="script-title" contenteditable="true">Acidente de carro: o que fazer nos primeiros 10 minutos</h3>
+          </div>
+          <div class="approval-badge" data-id="spt-1">⏳ Pendente</div>
+        </div>
+        <div class="script-label">SCRIPT <span style="font-weight:400;opacity:0.6;font-size:0.6rem">✏️ editável</span></div>
+        <div class="script-box script-editable" contenteditable="true" data-script-id="spt-1"><span class="hook">[GANCHO — falar olhando direto pra câmera]</span>
+Se você sofreu um acidente de carro em Massachusetts,
+os próximos 10 minutos podem definir
+se você vai receber indenização... ou zero.
+
+<span class="bracket">[CONTEÚDO — gestos, ritmo rápido]</span>
+Primeiro: não saia do carro sem registrar tudo em foto.
+Segundo: ligue pro 911 mesmo que seja pequeno.
+Terceiro: NÃO diga que está bem para o outro motorista.
+Por quê? Porque dor de whiplash pode aparecer horas depois.
+
+<span class="bracket">[VIRADA — tom mais baixo, pessoal]</span>
+E o mais importante que ninguém te conta:
+você não precisa ser cidadão americano
+pra ter direito a essa indenização.
+
+<span class="bracket">[CTA — sorriso, direto]</span>
+Sou o advogado [NOME], da Castel & Hall.
+Consulta gratuita — link na bio.
+Salva esse vídeo. Você pode precisar um dia.</div>
+        <div class="script-feedback-area" data-id="spt-1"></div>
+      </div>
+
+      <div class="card script-card" data-script-id="spt-2">
+        <div style="display:flex;align-items:flex-start;justify-content:space-between;gap:1rem;flex-wrap:wrap;margin-bottom:0.7rem;">
+          <div>
+            <span class="pill pill-green">ROTEIRO 02 — CARROSSEL · 6–8 slides</span>
+            <h3 style="margin-top:0.5rem" class="script-title" contenteditable="true">3 erros que destroem sua indenização</h3>
+          </div>
+          <div class="approval-badge" data-id="spt-2">⏳ Pendente</div>
+        </div>
+        <div class="script-label">ESTRUTURA DOS SLIDES <span style="font-weight:400;opacity:0.6;font-size:0.6rem">✏️ editável</span></div>
+        <div class="script-box script-editable" contenteditable="true" data-script-id="spt-2"><span class="hook">SLIDE 1 (capa):</span>
+"3 erros que as pessoas cometem depois de um acidente
+e que destroem qualquer chance de indenização"
+[foto do advogado sério, fundo escuro]
+
+<span class="bracket">SLIDE 2:</span>
+ERRO #1: Aceitar o valor que o seguro oferece
+→ O seguro sempre oferece o mínimo primeiro.
+→ Você tem direito de negociar — ou processar.
+
+<span class="bracket">SLIDE 3:</span>
+ERRO #2: Esperar para ir ao médico
+→ Cada dia sem documentação médica = munição pro seguro
+→ "Se estava bem, por que não foi ao médico?"
+
+<span class="bracket">SLIDE 4:</span>
+ERRO #3: Postar nas redes sociais sobre o acidente
+→ Tudo o que você posta pode ser usado contra você.
+→ Silêncio total nas redes até o caso fechar.
+
+<span class="bracket">SLIDES 5–7:</span>
+[Dica bônus + o que fazer na prática]
+
+<span class="bracket">SLIDE FINAL (CTA):</span>
+"Sofreu um acidente? Fale com a gente antes de falar
+com qualquer seguro. Consulta gratuita."
+[telefone + link na bio]</div>
+        <div class="script-feedback-area" data-id="spt-2"></div>
+      </div>
+
+      <div class="card script-card" data-script-id="spt-3">
+        <div style="display:flex;align-items:flex-start;justify-content:space-between;gap:1rem;flex-wrap:wrap;margin-bottom:0.7rem;">
+          <div>
+            <span class="pill pill-blue">ROTEIRO 03 — REEL HUMANIZADO · 30 seg</span>
+            <h3 style="margin-top:0.5rem" class="script-title" contenteditable="true">"Por que eu virei advogado para a comunidade imigrante"</h3>
+          </div>
+          <div class="approval-badge" data-id="spt-3">⏳ Pendente</div>
+        </div>
+        <div class="script-label">SCRIPT <span style="font-weight:400;opacity:0.6;font-size:0.6rem">✏️ editável</span></div>
+        <div class="script-box script-editable" contenteditable="true" data-script-id="spt-3"><span class="hook">[GANCHO — tom pessoal, sem script aparente]</span>
+"Vou te contar por que eu faço esse trabalho."
+
+<span class="bracket">[HISTÓRIA — 15 segundos]</span>
+[Advogado conta brevemente uma história pessoal
+de conexão com a comunidade imigrante —
+familiar, cliente marcante, ou experiência própria]
+
+<span class="bracket">[VIRADA]</span>
+"Muita gente não procura advogado porque tem medo.
+Medo de não ser ouvida. Medo de não entender.
+É exatamente por isso que eu estou aqui."
+
+<span class="bracket">[ENCERRAMENTO — sem CTA agressivo]</span>
+"Se precisar, estamos em Framingham e Woburn.
+E a primeira conversa é sempre de graça."</div>
+        <div class="script-feedback-area" data-id="spt-3"></div>
+      </div>
+
+    </div>
+
+    <!-- ── EN ── -->
+    <div id="script-sen" class="lang-content">
+
+      <div class="card script-card" data-script-id="sen-1">
+        <div style="display:flex;align-items:flex-start;justify-content:space-between;gap:1rem;flex-wrap:wrap;margin-bottom:0.7rem;">
+          <div>
+            <span class="pill pill-gold">SCRIPT 01 — REEL · 45–60 sec</span>
+            <h3 style="margin-top:0.5rem" class="script-title" contenteditable="true">Car accident: what to do in the first 10 minutes</h3>
+          </div>
+          <div class="approval-badge" data-id="sen-1">⏳ Pending</div>
+        </div>
+        <div class="script-label">SCRIPT <span style="font-weight:400;opacity:0.6;font-size:0.6rem">✏️ editable</span></div>
+        <div class="script-box script-editable" contenteditable="true" data-script-id="sen-1"><span class="hook">[HOOK — direct eye contact with camera]</span>
+If you were just in a car accident in Massachusetts,
+the next 10 minutes will determine
+whether you get compensated... or get nothing.
+
+<span class="bracket">[CONTENT — fast pace, gestures]</span>
+Step one: Don't leave the scene without photographing everything.
+Step two: Call 911 even if it seems minor.
+Step three: Do NOT tell the other driver you're "okay."
+Why? Because whiplash symptoms can appear hours later.
+
+<span class="bracket">[TURN — lower tone, personal]</span>
+And the most important thing nobody tells you:
+You do NOT need to be a US citizen
+to have a right to compensation.
+
+<span class="bracket">[CTA — smile, direct]</span>
+I'm Attorney [NAME] at Castel & Hall.
+Free consultation — link in bio.
+Save this video. You might need it someday.</div>
+        <div class="script-feedback-area" data-id="sen-1"></div>
+      </div>
+
+      <div class="card script-card" data-script-id="sen-2">
+        <div style="display:flex;align-items:flex-start;justify-content:space-between;gap:1rem;flex-wrap:wrap;margin-bottom:0.7rem;">
+          <div>
+            <span class="pill pill-green">SCRIPT 02 — CAROUSEL · 6–8 slides</span>
+            <h3 style="margin-top:0.5rem" class="script-title" contenteditable="true">3 mistakes that kill your injury claim</h3>
+          </div>
+          <div class="approval-badge" data-id="sen-2">⏳ Pending</div>
+        </div>
+        <div class="script-label">SLIDE STRUCTURE <span style="font-weight:400;opacity:0.6;font-size:0.6rem">✏️ editable</span></div>
+        <div class="script-box script-editable" contenteditable="true" data-script-id="sen-2"><span class="hook">SLIDE 1 (cover):</span>
+"3 mistakes people make after an accident
+that destroy any chance of a settlement"
+[attorney photo, serious expression, dark background]
+
+<span class="bracket">SLIDE 2:</span>
+MISTAKE #1: Accepting the insurance company's first offer
+→ They always start low. Always.
+→ You have the right to negotiate — or sue.
+
+<span class="bracket">SLIDE 3:</span>
+MISTAKE #2: Waiting to see a doctor
+→ Every day without medical documentation = ammo for the insurance
+→ "If you were hurt, why didn't you go to the doctor?"
+
+<span class="bracket">SLIDE 4:</span>
+MISTAKE #3: Posting about the accident on social media
+→ Everything you post can and will be used against you.
+→ Total social media silence until the case is closed.
+
+<span class="bracket">SLIDES 5–7:</span>
+[Bonus tip + practical action steps]
+
+<span class="bracket">FINAL SLIDE (CTA):</span>
+"Were you hurt? Talk to us before you talk to any insurance company.
+Free consultation."
+[phone number + link in bio]</div>
+        <div class="script-feedback-area" data-id="sen-2"></div>
+      </div>
+
+      <div class="card script-card" data-script-id="sen-3">
+        <div style="display:flex;align-items:flex-start;justify-content:space-between;gap:1rem;flex-wrap:wrap;margin-bottom:0.7rem;">
+          <div>
+            <span class="pill pill-blue">SCRIPT 03 — HUMANIZED REEL · 30 sec</span>
+            <h3 style="margin-top:0.5rem" class="script-title" contenteditable="true">"Why I became a lawyer for immigrant communities"</h3>
+          </div>
+          <div class="approval-badge" data-id="sen-3">⏳ Pending</div>
+        </div>
+        <div class="script-label">SCRIPT <span style="font-weight:400;opacity:0.6;font-size:0.6rem">✏️ editable</span></div>
+        <div class="script-box script-editable" contenteditable="true" data-script-id="sen-3"><span class="hook">[HOOK — personal tone, no teleprompter feel]</span>
+"Let me tell you why I do this work."
+
+<span class="bracket">[STORY — 15 seconds]</span>
+[Attorney shares a brief personal story connecting them
+to the immigrant community — a family member,
+a memorable client, or personal experience]
+
+<span class="bracket">[TURN]</span>
+"A lot of people don't call a lawyer because they're afraid.
+Afraid they won't be understood. Afraid it won't matter.
+That's exactly why I'm here."
+
+<span class="bracket">[CLOSE — no aggressive CTA]</span>
+"If you ever need us, we're in Framingham and Woburn.
+And the first conversation is always free."</div>
+        <div class="script-feedback-area" data-id="sen-3"></div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════════
+       TAB 8: APROVADOS
+  ══════════════════════════════════════════════ -->
+  <section id="approved" class="section">
+    <h2 class="section-title">Conteúdos <span style="color:var(--crimson)">Aprovados</span></h2>
+    <p class="section-subtitle">Roteiros aprovados pelo escritório prontos para gravação. Cole o link do áudio gravado pelo advogado para fechar o ciclo de produção.</p>
+
+    <div id="approved-empty" style="text-align:center;padding:3rem 1rem;color:var(--text3);">
+      <div style="font-size:2.5rem;margin-bottom:0.8rem;">✅</div>
+      <p style="font-weight:600;color:var(--text2);margin-bottom:0.3rem;">Nenhum roteiro aprovado ainda</p>
+      <p style="font-size:0.82rem;">Vá até a aba <strong>Roteiros</strong>, clique em "Aprovar" em qualquer script e ele aparecerá aqui.</p>
+    </div>
+    <div id="approved-list" style="display:flex;flex-direction:column;gap:1rem;"></div>
+  </section>
+
+  <!-- ══════════════════════════════════════════════
+       TAB 5: CALENDÁRIO
+  ══════════════════════════════════════════════ -->
+  <section id="calendar" class="section">
+    <h2 class="section-title">Calendário — Primeiro Mês</h2>
+    <p class="section-subtitle">4 posts/semana · 100% feed (Reels curtos + Carrosséis) · Foco total em alcance e novos seguidores · Clique em qualquer post para adicionar arquivo ou link.</p>
+
+    <div style="display:flex;gap:1rem;flex-wrap:wrap;margin-bottom:1.5rem;align-items:center;">
+      <div class="legend-item"><div class="legend-dot" style="background:rgba(255,255,255,0.12);border:1px solid rgba(255,255,255,0.4)"></div> 🎬 Reel PT</div>
+      <div class="legend-item"><div class="legend-dot" style="background:rgba(26,79,168,0.35);border:1px solid #4a7fd5"></div> 🎬 Reel EN</div>
+      <div class="legend-item"><div class="legend-dot" style="background:rgba(30,73,118,0.25);border:1px solid #5b8fc9"></div> 📋 Carrossel PT</div>
+      <div class="legend-item"><div class="legend-dot" style="background:rgba(180,100,0,0.35);border:1px solid #e8941a"></div> 📋 Carrossel EN</div>
+      <div style="margin-left:auto;display:flex;gap:0.5rem;">
+        <span style="font-size:0.72rem;font-family:'JetBrains Mono',monospace;color:#4a5568;">STATUS:</span>
+        <span style="font-size:0.72rem;font-family:'JetBrains Mono',monospace;color:#4a5568;">⏳ pendente</span>
+        <span style="font-size:0.72rem;font-family:'JetBrains Mono',monospace;color:#c96a00;">🎬 produção</span>
+        <span style="font-size:0.72rem;font-family:'JetBrains Mono',monospace;color:#1a4fa8;">👀 revisão</span>
+        <span style="font-size:0.72rem;font-family:'JetBrains Mono',monospace;color:#1e4976;">✅ pronto</span>
+        <span style="font-size:0.72rem;font-family:'DM Mono',monospace;color:#c0182f;">📤 postado</span>
+      </div>
+    </div>
+
+    <!-- SEMANA 1 -->
+    <div style="font-family:'DM Mono',monospace;font-size:0.65rem;color:#c0182f;letter-spacing:0.12em;text-transform:uppercase;margin-bottom:0.6rem;margin-top:0.5rem;">SEMANA 1</div>
+    <div id="posts-week1" style="display:flex;flex-direction:column;gap:0.5rem;margin-bottom:1.5rem;"></div>
+
+    <!-- SEMANA 2 -->
+    <div style="font-family:'DM Mono',monospace;font-size:0.65rem;color:#c0182f;letter-spacing:0.12em;text-transform:uppercase;margin-bottom:0.6rem;">SEMANA 2</div>
+    <div id="posts-week2" style="display:flex;flex-direction:column;gap:0.5rem;margin-bottom:1.5rem;"></div>
+
+    <!-- SEMANA 3 -->
+    <div style="font-family:'DM Mono',monospace;font-size:0.65rem;color:#c0182f;letter-spacing:0.12em;text-transform:uppercase;margin-bottom:0.6rem;">SEMANA 3</div>
+    <div id="posts-week3" style="display:flex;flex-direction:column;gap:0.5rem;margin-bottom:1.5rem;"></div>
+
+    <!-- SEMANA 4 -->
+    <div style="font-family:'DM Mono',monospace;font-size:0.65rem;color:#c0182f;letter-spacing:0.12em;text-transform:uppercase;margin-bottom:0.6rem;">SEMANA 4</div>
+    <div id="posts-week4" style="display:flex;flex-direction:column;gap:0.5rem;margin-bottom:2rem;"></div>
+
+    <div class="tip">
+      <strong>✅ Por que só feed?</strong> Reels e Carrosséis são distribuídos para quem <em>não te segue ainda</em>. Stories só chegam a quem já segue. Para atrair novos clientes da comunidade imigrante em MA, cada post precisa funcionar como um anúncio que se paga sozinho com alcance orgânico. Quando o perfil tiver 2–3k seguidores engajados, aí faz sentido investir em Stories para nutrir essa base.
+    </div>
+    <div class="tip" style="margin-top:0.8rem;">
+      <strong>⏰ Melhor horário para postar (EST):</strong> Terça a sexta, <strong>7h–8h</strong> (antes do trabalho) ou <strong>19h30–21h</strong> (após o trabalho). Evite postar no domingo de manhã e segunda de manhã — menor alcance para esse público.
+    </div>
+
+    <!-- MODAL -->
+    <div id="fileModal" style="display:none;position:fixed;inset:0;background:rgba(14,31,61,0.55);z-index:9999;align-items:center;justify-content:center;">
+      <div style="background:#ffffff;border:1px solid #dde2ea;border-radius:12px;padding:2rem;max-width:500px;width:92%;position:relative;box-shadow:0 8px 40px rgba(14,31,61,0.18);">
+        <button onclick="closeModal()" style="position:absolute;top:1rem;right:1rem;background:#f4f6f9;border:1px solid #dde2ea;color:#4a5568;font-size:1rem;cursor:pointer;width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;">✕</button>
+        <div style="font-family:'DM Mono',monospace;font-size:0.62rem;color:#c0182f;letter-spacing:0.12em;text-transform:uppercase;margin-bottom:0.25rem;" id="modal-week-label"></div>
+        <div style="font-size:0.72rem;color:#4a5568;font-family:'JetBrains Mono',monospace;margin-bottom:0.2rem;" id="modal-format-label"></div>
+        <h3 style="font-family:'Montserrat',sans-serif;color:#0e1f3d;font-size:1rem;font-weight:800;margin-bottom:0.25rem;line-height:1.3;" id="modal-title"></h3>
+        <p style="font-size:0.78rem;color:#4a5568;margin-bottom:1.4rem;line-height:1.5;" id="modal-hook"></p>
+
+        <div style="margin-bottom:1rem;">
+          <label style="font-size:0.7rem;color:#4a5568;display:block;margin-bottom:0.35rem;font-family:'JetBrains Mono',monospace;letter-spacing:0.06em;text-transform:uppercase;">📎 Link do arquivo (Drive, Dropbox, WeTransfer…)</label>
+          <input type="url" id="modal-link" placeholder="https://drive.google.com/file/..." style="width:100%;background:#f4f6f9;border:1px solid #dde2ea;border-radius:8px;padding:0.65rem 0.9rem;color:#0e1f3d;font-size:0.82rem;font-family:'Montserrat',sans-serif;outline:none;transition:border 0.2s;" onfocus="this.style.borderColor='#0e1f3d'" onblur="this.style.borderColor='rgba(255,255,255,0.1)'">
+        </div>
+
+        <div style="margin-bottom:1rem;">
+          <label style="font-size:0.7rem;color:#4a5568;display:block;margin-bottom:0.35rem;font-family:'JetBrains Mono',monospace;letter-spacing:0.06em;text-transform:uppercase;">📝 Instrução / observação para este post</label>
+          <textarea id="modal-note" rows="3" placeholder="Ex: Gravar com advogado falando PT. Legendar no CapCut. Tom urgente." style="width:100%;background:#f4f6f9;border:1px solid #dde2ea;border-radius:8px;padding:0.65rem 0.9rem;color:#0e1f3d;font-size:0.82rem;font-family:'Montserrat',sans-serif;outline:none;resize:vertical;" onfocus="this.style.borderColor='#0e1f3d'" onblur="this.style.borderColor='rgba(255,255,255,0.1)'"></textarea>
+        </div>
+
+        <div style="margin-bottom:1.4rem;">
+          <label style="font-size:0.7rem;color:#4a5568;display:block;margin-bottom:0.35rem;font-family:'JetBrains Mono',monospace;letter-spacing:0.06em;text-transform:uppercase;">🚦 Status de produção</label>
+          <div style="display:flex;gap:0.4rem;flex-wrap:wrap;" id="status-buttons">
+            <button class="status-opt" data-val="pending" onclick="selectStatus(this)">⏳ Pendente</button>
+            <button class="status-opt" data-val="production" onclick="selectStatus(this)">🎬 Em produção</button>
+            <button class="status-opt" data-val="review" onclick="selectStatus(this)">👀 Em revisão</button>
+            <button class="status-opt" data-val="ready" onclick="selectStatus(this)">✅ Pronto</button>
+            <button class="status-opt" data-val="posted" onclick="selectStatus(this)">📤 Postado</button>
+          </div>
+        </div>
+
+        <div style="display:flex;gap:0.8rem;">
+          <button onclick="saveModal()" style="flex:1;background:#0e1f3d;color:#fff;border:none;border-radius:8px;padding:0.75rem;font-size:0.85rem;font-weight:700;cursor:pointer;font-family:'Montserrat',sans-serif;transition:background 0.2s;" onmouseover="this.style.background='#2558c0'" onmouseout="this.style.background='#1a4fa8'">Salvar</button>
+          <button onclick="closeModal()" style="flex:0.4;background:#f4f6f9;color:#4a5568;border:1px solid #dde2ea;border-radius:8px;padding:0.75rem;font-size:0.85rem;cursor:pointer;font-family:'DM Sans',sans-serif;">Cancelar</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════════
+       TAB 6: BENCHMARKS
+  ══════════════════════════════════════════════ -->
+  <section id="benchmarks" class="section">
+    <h2 class="section-title">Benchmarks Reais</h2>
+    <p class="section-subtitle">Dados reais do mercado para você saber se está no caminho certo — sem ilusão.</p>
+
+    <div class="stat-grid">
+      <div class="stat-box">
+        <span class="stat-num">0.5%</span>
+        <div class="stat-label">Taxa média de engajamento no Instagram (todas as indústrias, 2025)</div>
+      </div>
+      <div class="stat-box">
+        <span class="stat-num">0.55%</span>
+        <div class="stat-label">Carrossel — melhor formato para engajamento orgânico</div>
+      </div>
+      <div class="stat-box">
+        <span class="stat-num">1–3%</span>
+        <div class="stat-label">Meta realista para perfil jurídico educativo ativo</div>
+      </div>
+      <div class="stat-box">
+        <span class="stat-num">4–6x</span>
+        <div class="stat-label">Mais alcance de um Reel com advogado falando vs. post gráfico</div>
+      </div>
+      <div class="stat-box">
+        <span class="stat-num">10%</span>
+        <div class="stat-label">Crescimento de escritórios de advocacia no Instagram nos últimos 4 anos (Brasil/EUA)</div>
+      </div>
+      <div class="stat-box">
+        <span class="stat-num">3s</span>
+        <div class="stat-label">Tempo crítico de retenção em Reels — o gancho precisa ser nos primeiros 3 segundos</div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-header"><span class="pill pill-gold">EXPECTATIVAS REALISTAS — PERFIL NOVO</span></div>
+      <h3>O que esperar mês a mês</h3>
+      <table class="hooks-table" style="margin-top:1rem">
+        <thead>
+          <tr>
+            <th>Período</th>
+            <th>Seguidores esperados</th>
+            <th>Engajamento esperado</th>
+            <th>O que focar</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Mês 1–2</td>
+            <td>+50 a +150 seguidores</td>
+            <td>2–4% (base pequena)</td>
+            <td>Consistência + testar formatos</td>
+          </tr>
+          <tr>
+            <td>Mês 3–4</td>
+            <td>+150 a +400 seguidores</td>
+            <td>1.5–3%</td>
+            <td>Dobrar o formato que performa</td>
+          </tr>
+          <tr>
+            <td>Mês 5–6</td>
+            <td>+300 a +800 seguidores</td>
+            <td>1–2.5%</td>
+            <td>Primeiro Reel viral tentativo + Stories</td>
+          </tr>
+          <tr>
+            <td>Mês 7–12</td>
+            <td>Perfil começa a crescer exponencialmente se 1 Reel viralizar</td>
+            <td>Variável</td>
+            <td>Comunidade + DMs + consultas</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="alert">
+      <strong>⚠️ Verdade incômoda:</strong> Seguidores não pagam honorários. O objetivo real do Instagram para um escritório de advocacia não é ter 10k seguidores — é converter visualizações em DMs e DMs em consultas gratuitas. Um perfil com 800 seguidores altamente engajados que geram 3 novos clientes por mês vale infinitamente mais do que 10k seguidores sem conversão. Meça DMs e consultas agendadas via Instagram — não apenas curtidas.
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════════
+       TAB 7: REGRAS MASSACHUSETTS BAR
+  ══════════════════════════════════════════════ -->
+  <section id="rules" class="section">
+    <h2 class="section-title">Massachusetts Bar — Regras de Publicidade</h2>
+    <p class="section-subtitle">Massachusetts Rules of Professional Conduct (Rules 7.1–7.4) — aplicadas a redes sociais e Instagram especificamente.</p>
+
+    <div class="alert">
+      <strong>⚠️ Importante:</strong> Este resumo é orientativo com base nas Rules 7.1–7.4 do Massachusetts Rules of Professional Conduct. Em caso de dúvida sobre conteúdo específico, o escritório pode contatar diretamente a <strong>Office of Bar Counsel's ethics hotline</strong> em (617) 728-8700 antes de publicar.
+    </div>
+
+    <div class="pillar-grid">
+      <div class="pillar-card green-top">
+        <div class="pillar-num">✅ RULE 7.2 — PERMITIDO</div>
+        <h3>O que pode postar no Instagram</h3>
+        <ul>
+          <li>Conteúdo educativo geral sobre direitos (sem prometer resultado)</li>
+          <li>Áreas de atuação do escritório (personal injury, imigração, divórcio)</li>
+          <li>Credenciais, formação acadêmica e prêmios dos advogados</li>
+          <li>Depoimentos de clientes com autorização expressa por escrito</li>
+          <li>Anúncio de consulta gratuita</li>
+          <li>Memberships em associações jurídicas (ex: MBA, ABA)</li>
+          <li>Conteúdo humanizando a equipe e o escritório</li>
+          <li>Posts devem incluir nome do advogado ou firma responsável pelo conteúdo</li>
+        </ul>
+      </div>
+      <div class="pillar-card red-top">
+        <div class="pillar-num">❌ RULES 7.1 / 7.3 / 7.4 — PROIBIDO</div>
+        <h3>O que NÃO pode postar</h3>
+        <ul>
+          <li>Qualquer declaração falsa ou enganosa sobre serviços (Rule 7.1)</li>
+          <li>"Garantimos X dólares" ou promessa de resultado específico</li>
+          <li>Comparação direta com outros escritórios que seja enganosa</li>
+          <li>Usar "especialista" ou "expert" sem certificação formal reconhecida (Rule 7.4)</li>
+          <li>Detalhes de casos identificáveis sem autorização do cliente</li>
+          <li>Solicitação direta de emprego a prospect específico via DM (Rule 7.3)</li>
+          <li>Responder dúvidas específicas de casos nos comentários públicos</li>
+          <li>Criar expectativa injustificada de resultado com base em casos passados</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-header"><span class="pill pill-gold">RULE 7.4 — O CASO DO "ESPECIALISTA"</span></div>
+      <h3>Como mencionar áreas de atuação sem violar a regra</h3>
+      <p style="margin-top:0.5rem; color: var(--gray);">A Rule 7.4 proíbe usar "specialist", "expert" ou "certified" a menos que exista uma certificação formal reconhecida. Para personal injury e imigração, use sempre linguagem de prática, não de especialização.</p>
+      <p style="margin-top:0.8rem">❌ Evitar: <em style="color:#f0a090">"We are personal injury specialists"</em></p>
+      <p style="margin-top:0.4rem">✅ Usar: <em style="color:#7ecfa0">"Our firm handles personal injury cases across Massachusetts"</em></p>
+      <p style="margin-top:0.8rem">❌ Evitar: <em style="color:#f0a090">"Somos especialistas em imigração"</em></p>
+      <p style="margin-top:0.4rem">✅ Usar: <em style="color:#7ecfa0">"Atuamos em casos de imigração em todo Massachusetts — fale com a gente"</em></p>
+    </div>
+
+    <div class="card">
+      <div class="card-header"><span class="pill pill-blue">COMO FALAR DE VALORES DE INDENIZAÇÃO</span></div>
+      <h3>A forma certa de abordar números sem criar expectativa injustificada</h3>
+      <p style="margin-top:0.5rem; color: var(--gray);">Mencionar valores é permitido desde que não crie expectativa de resultado. A Rule 7.1 proíbe qualquer comunicação que omita fatos necessários para não ser enganosa.</p>
+      <p style="margin-top:0.8rem">❌ Evitar: <em style="color:#f0a090">"Você pode receber $500,000 no seu caso"</em></p>
+      <p style="margin-top:0.4rem">✅ Usar: <em style="color:#7ecfa0">"Casos de personal injury em MA podem incluir compensação por custos médicos, salários perdidos e dor e sofrimento. Cada caso é único — consulta gratuita para entender o seu."</em></p>
+      <p style="margin-top:0.8rem">❌ Evitar: <em style="color:#f0a090">"Ganhamos 100% dos nossos casos"</em></p>
+      <p style="margin-top:0.4rem">✅ Usar: <em style="color:#7ecfa0">"Our firm has successfully represented clients across Massachusetts in personal injury and immigration matters."</em></p>
+    </div>
+
+    <div class="card">
+      <div class="card-header"><span class="pill pill-gray">RULE 7.3 — CUIDADO COM DMs</span></div>
+      <h3>A linha entre engajamento orgânico e solicitação proibida</h3>
+      <p>A Rule 7.3 restringe a solicitação direta de emprego profissional. Responder comentários e DMs de pessoas que já te buscaram é permitido. O problema é contatar proativamente um prospect específico (ex: alguém que postou sobre um acidente) via DM para oferecer serviços — isso pode ser considerado solicitação indevida.</p>
+      <p style="margin-top:0.8rem">✅ Permitido: responder quem te mandou DM espontaneamente, responder comentários com informação geral, direcionar para "link na bio" ou "consulta gratuita".</p>
+      <p style="margin-top:0.5rem">⚠️ Zona cinza: enviar DM proativo para alguém que comentou "tive um acidente" no seu post. Evite.</p>
+      <hr class="divider">
+      <p style="font-size:0.78rem; color: var(--gray);">📌 Fonte: Massachusetts Rules of Professional Conduct, Rules 7.1–7.4. Para consulta direta: <strong style="color: var(--gold);">Office of Bar Counsel</strong> · (617) 728-8700 · board.bar.state.ma.us</p>
+    </div>
+  </section>
+
+</main>
+
+<style>
+  .hook-cell {
+    cursor: text;
+    border-radius: 4px;
+    transition: background 0.15s, outline 0.15s;
+    outline: 2px solid transparent;
+    min-width: 180px;
+  }
+  .hook-cell:hover { background: #f0f4ff; }
+  .hook-cell:focus {
+    outline: 2px solid var(--blue);
+    background: #fff;
+    box-shadow: 0 0 0 4px rgba(26,79,168,0.08);
+  }
+  .hook-cell.saved-flash { background: #d6f0e3; transition: background 0.4s; }
+  .hook-row-delete {
+    display: none;
+    position: absolute;
+    right: -28px;
+    top: 50%;
+    transform: translateY(-50%);
+    background: transparent;
+    border: none;
+    color: var(--crimson);
+    cursor: pointer;
+    font-size: 1rem;
+    opacity: 0.5;
+    transition: opacity 0.15s;
+  }
+  tr:hover .hook-row-delete { display: block; }
+  .hook-row-delete:hover { opacity: 1; }
+  #hooks tr { position: relative; }
+</style>
+
+<style>
+  /* ── SCRIPT EDITABLE ── */
+  .script-editable {
+    cursor: text;
+    outline: 2px solid transparent;
+    transition: outline 0.15s, background 0.15s;
+    border-radius: 8px;
+  }
+  .script-editable:focus {
+    outline: 2px solid var(--blue);
+    background: #0a1830;
+  }
+  .script-title { cursor: text; border-radius: 4px; padding: 2px 4px; margin: -2px -4px; transition: background 0.15s; }
+  .script-title:hover { background: var(--navy-light); }
+  .script-title:focus { background: var(--navy-light); outline: 2px solid var(--blue); }
+
+  /* ── APPROVAL BADGE ── */
+  .approval-badge {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.68rem;
+    font-weight: 700;
+    padding: 0.25rem 0.7rem;
+    border-radius: 100px;
+    white-space: nowrap;
+    border: 1px solid var(--border2);
+    background: var(--bg2);
+    color: var(--text3);
+    user-select: none;
+  }
+  .approval-badge.approved { background: var(--green-light); color: var(--green); border-color: rgba(30,73,118,0.3); }
+  .approval-badge.rejected { background: var(--crimson-light); color: var(--crimson); border-color: rgba(192,24,47,0.2); }
+
+  /* ── FEEDBACK AREA ── */
+  .script-feedback-area { margin-top: 1.1rem; border-top: 1px solid var(--border); padding-top: 1rem; }
+  .feedback-thread { display: flex; flex-direction: column; gap: 0.5rem; margin-bottom: 0.8rem; }
+  .feedback-msg {
+    background: var(--bg2);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 0.6rem 0.85rem;
+    font-size: 0.8rem;
+    color: var(--text);
+    line-height: 1.5;
+    position: relative;
+  }
+  .feedback-msg .fb-meta { font-size: 0.65rem; color: var(--text3); font-family: 'JetBrains Mono', monospace; margin-bottom: 0.2rem; }
+  .feedback-msg .fb-delete { position: absolute; top: 0.5rem; right: 0.5rem; background: none; border: none; color: var(--crimson); cursor: pointer; font-size: 0.75rem; opacity: 0.4; transition: opacity 0.15s; }
+  .feedback-msg:hover .fb-delete { opacity: 1; }
+  .feedback-input-row { display: flex; gap: 0.5rem; align-items: flex-end; }
+  .feedback-input {
+    flex: 1;
+    background: var(--surface);
+    border: 1px solid var(--border2);
+    border-radius: 8px;
+    padding: 0.6rem 0.8rem;
+    font-size: 0.82rem;
+    font-family: 'Montserrat', sans-serif;
+    color: var(--text);
+    resize: none;
+    outline: none;
+    transition: border-color 0.15s;
+    min-height: 40px;
+  }
+  .feedback-input:focus { border-color: var(--navy); }
+  .feedback-send-btn {
+    background: var(--navy);
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    padding: 0.6rem 1rem;
+    font-size: 0.75rem;
+    font-weight: 700;
+    font-family: 'Montserrat', sans-serif;
+    cursor: pointer;
+    white-space: nowrap;
+    transition: background 0.15s;
+  }
+  .feedback-send-btn:hover { background: var(--crimson); }
+  .approval-row { display: flex; gap: 0.5rem; margin-top: 0.7rem; flex-wrap: wrap; align-items: center; }
+  .approve-btn {
+    padding: 0.4rem 1rem;
+    border-radius: 6px;
+    font-size: 0.75rem;
+    font-weight: 700;
+    font-family: 'Montserrat', sans-serif;
+    cursor: pointer;
+    transition: all 0.15s;
+    border: 1px solid;
+  }
+  .approve-btn.yes { background: var(--green-light); color: var(--green); border-color: rgba(30,73,118,0.3); }
+  .approve-btn.yes:hover { background: var(--green); color: #fff; }
+  .approve-btn.no { background: var(--crimson-light); color: var(--crimson); border-color: rgba(192,24,47,0.2); }
+  .approve-btn.no:hover { background: var(--crimson); color: #fff; }
+  .approve-btn.reset { background: var(--bg2); color: var(--text3); border-color: var(--border2); }
+  .approve-btn.reset:hover { background: var(--border2); }
+
+  /* ── APPROVED LIST ── */
+  .approved-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-left: 4px solid var(--green);
+    border-radius: 10px;
+    padding: 1.2rem 1.4rem;
+    box-shadow: var(--shadow);
+  }
+  .approved-card h4 { font-size: 0.95rem; font-weight: 700; color: var(--navy); margin-bottom: 0.2rem; }
+  .approved-card .approved-meta { font-size: 0.7rem; color: var(--text3); font-family: 'JetBrains Mono', monospace; margin-bottom: 0.8rem; }
+  .audio-link-row { display: flex; gap: 0.5rem; align-items: center; flex-wrap: wrap; margin-top: 0.6rem; }
+  .audio-link-input {
+    flex: 1;
+    min-width: 200px;
+    background: var(--bg2);
+    border: 1px solid var(--border2);
+    border-radius: 6px;
+    padding: 0.5rem 0.8rem;
+    font-size: 0.8rem;
+    font-family: 'Montserrat', sans-serif;
+    color: var(--text);
+    outline: none;
+    transition: border-color 0.15s;
+  }
+  .audio-link-input:focus { border-color: var(--navy); background: #fff; }
+  .audio-save-btn {
+    background: var(--navy);
+    color: #fff;
+    border: none;
+    border-radius: 6px;
+    padding: 0.5rem 1rem;
+    font-size: 0.75rem;
+    font-weight: 700;
+    font-family: 'Montserrat', sans-serif;
+    cursor: pointer;
+  }
+  .audio-link-display { font-size: 0.78rem; }
+  .audio-link-display a { color: var(--blue); font-weight: 600; text-decoration: none; }
+  .audio-link-display a:hover { text-decoration: underline; }
+  .unapprove-btn { font-size: 0.72rem; color: var(--text3); background: none; border: 1px solid var(--border2); border-radius: 6px; padding: 0.35rem 0.7rem; cursor: pointer; font-family: 'Montserrat', sans-serif; font-weight: 600; margin-left: auto; }
+  .unapprove-btn:hover { color: var(--crimson); border-color: var(--crimson); }
+</style>
+
+<script>
+  // ── SCRIPT DATA STORE ──────────────────────────────────────
+  let scriptData = {};
+  try { scriptData = JSON.parse(localStorage.getItem('ch_scripts') || '{}'); } catch(e) {}
+
+  function saveScriptData() {
+    try { localStorage.setItem('ch_scripts', JSON.stringify(scriptData)); } catch(e) {}
+  }
+
+  function getSD(id) {
+    if (!scriptData[id]) scriptData[id] = { content:'', title:'', approval:'pending', feedback:[], audioLink:'' };
+    return scriptData[id];
+  }
+
+  const scriptMeta = {
+    'spt-1': { label:'🇧🇷 Roteiro 01 — Reel PT', pill:'ROTEIRO 01 — REEL · 45–60 seg' },
+    'spt-2': { label:'🇧🇷 Roteiro 02 — Carrossel PT', pill:'ROTEIRO 02 — CARROSSEL' },
+    'spt-3': { label:'🇧🇷 Roteiro 03 — Reel Humanizado PT', pill:'ROTEIRO 03 — REEL HUMANIZADO' },
+    'sen-1': { label:'🇺🇸 Script 01 — Reel EN', pill:'SCRIPT 01 — REEL · 45–60 sec' },
+    'sen-2': { label:'🇺🇸 Script 02 — Carousel EN', pill:'SCRIPT 02 — CAROUSEL' },
+    'sen-3': { label:'🇺🇸 Script 03 — Humanized Reel EN', pill:'SCRIPT 03 — HUMANIZED REEL' },
+  };
+
+  function initScripts() {
+    document.querySelectorAll('.script-card').forEach(card => {
+      const id = card.dataset.scriptId;
+      const sd = getSD(id);
+
+      // Editable content autosave
+      const box = card.querySelector('.script-editable');
+      if (box && sd.content) box.textContent = sd.content;
+      if (box) box.addEventListener('input', () => { getSD(id).content = box.textContent; saveScriptData(); });
+
+      const titleEl = card.querySelector('.script-title');
+      if (titleEl && sd.title) titleEl.textContent = sd.title;
+      if (titleEl) titleEl.addEventListener('input', () => { getSD(id).title = titleEl.textContent; saveScriptData(); });
+
+      // Approval badge
+      updateBadge(id);
+
+      // Render feedback area
+      renderFeedback(id, card);
+    });
+    renderApprovedTab();
+  }
+
+  function updateBadge(id) {
+    const badge = document.querySelector(`.approval-badge[data-id="${id}"]`);
+    if (!badge) return;
+    const state = getSD(id).approval;
+    const isEN = id.startsWith('sen');
+    if (state === 'approved') {
+      badge.textContent = isEN ? '✅ Approved' : '✅ Aprovado';
+      badge.className = 'approval-badge approved';
+    } else if (state === 'rejected') {
+      badge.textContent = isEN ? '🔄 Needs revision' : '🔄 Revisar';
+      badge.className = 'approval-badge rejected';
+    } else {
+      badge.textContent = isEN ? '⏳ Pending' : '⏳ Pendente';
+      badge.className = 'approval-badge';
+    }
+  }
+
+  function renderFeedback(id, card) {
+    const area = card.querySelector('.script-feedback-area');
+    if (!area) return;
+    const sd = getSD(id);
+    const isEN = id.startsWith('sen');
+
+    const thread = sd.feedback.map((f, i) => `
+      <div class="feedback-msg">
+        <div class="fb-meta">${f.who} · ${f.time}</div>
+        ${f.text}
+        <button class="fb-delete" onclick="deleteFeedback('${id}',${i})">✕</button>
+      </div>
+    `).join('');
+
+    area.innerHTML = `
+      <div style="font-size:0.72rem;font-weight:700;color:var(--text3);font-family:'JetBrains Mono',monospace;text-transform:uppercase;letter-spacing:0.08em;margin-bottom:0.6rem;">
+        💬 ${isEN ? 'Comments' : 'Comentários'}
+      </div>
+      <div class="feedback-thread">${thread || `<p style="font-size:0.78rem;color:var(--text3);font-style:italic;">${isEN ? 'No comments yet.' : 'Nenhum comentário ainda.'}</p>`}</div>
+      <div class="feedback-input-row">
+        <textarea class="feedback-input" rows="2" placeholder="${isEN ? 'Leave a comment for the team...' : 'Deixe um comentário para o escritório...'}" id="fb-input-${id}"></textarea>
+        <button class="feedback-send-btn" onclick="sendFeedback('${id}')">${isEN ? 'Send' : 'Enviar'}</button>
+      </div>
+      <div class="approval-row">
+        <span style="font-size:0.72rem;font-weight:700;color:var(--text3);font-family:'JetBrains Mono',monospace;text-transform:uppercase;letter-spacing:0.06em;">${isEN ? 'Approval:' : 'Aprovação:'}</span>
+        <button class="approve-btn yes" onclick="setApproval('${id}','approved')">${isEN ? '✅ Approve' : '✅ Aprovar'}</button>
+        <button class="approve-btn no" onclick="setApproval('${id}','rejected')">${isEN ? '🔄 Request revision' : '🔄 Pedir revisão'}</button>
+        <button class="approve-btn reset" onclick="setApproval('${id}','pending')">${isEN ? '↺ Reset' : '↺ Resetar'}</button>
+      </div>
+    `;
+  }
+
+  function sendFeedback(id) {
+    const input = document.getElementById(`fb-input-${id}`);
+    const text = input.value.trim();
+    if (!text) return;
+    const now = new Date();
+    const time = now.toLocaleDateString('pt-BR') + ' ' + now.toLocaleTimeString('pt-BR', {hour:'2-digit',minute:'2-digit'});
+    getSD(id).feedback.push({ who: 'Equipe', time, text });
+    saveScriptData();
+    input.value = '';
+    const card = document.querySelector(`.script-card[data-script-id="${id}"]`);
+    if (card) renderFeedback(id, card);
+  }
+
+  function deleteFeedback(id, idx) {
+    getSD(id).feedback.splice(idx, 1);
+    saveScriptData();
+    const card = document.querySelector(`.script-card[data-script-id="${id}"]`);
+    if (card) renderFeedback(id, card);
+  }
+
+  function setApproval(id, state) {
+    getSD(id).approval = state;
+    saveScriptData();
+    updateBadge(id);
+    const card = document.querySelector(`.script-card[data-script-id="${id}"]`);
+    if (card) renderFeedback(id, card);
+    renderApprovedTab();
+  }
+
+  function renderApprovedTab() {
+    const list = document.getElementById('approved-list');
+    const empty = document.getElementById('approved-empty');
+    if (!list) return;
+    const approved = Object.entries(scriptData).filter(([,v]) => v.approval === 'approved');
+    if (approved.length === 0) {
+      list.innerHTML = '';
+      if (empty) empty.style.display = 'block';
+      return;
+    }
+    if (empty) empty.style.display = 'none';
+    list.innerHTML = approved.map(([id, sd]) => {
+      const meta = scriptMeta[id] || { label: id, pill: id };
+      const titleEl = document.querySelector(`.script-card[data-script-id="${id}"] .script-title`);
+      const title = titleEl ? titleEl.textContent : meta.label;
+      const audioLink = sd.audioLink || '';
+      return `
+        <div class="approved-card" id="approved-card-${id}">
+          <div style="display:flex;align-items:flex-start;justify-content:space-between;gap:1rem;flex-wrap:wrap;">
+            <div>
+              <span class="pill pill-green" style="margin-bottom:0.4rem;display:inline-block;">${meta.pill}</span>
+              <h4>${title}</h4>
+              <div class="approved-meta">✅ Aprovado · pronto para gravação</div>
+            </div>
+            <button class="unapprove-btn" onclick="setApproval('${id}','pending')">↺ Remover aprovação</button>
+          </div>
+          <div class="audio-link-row">
+            <span style="font-size:0.75rem;font-weight:700;color:var(--text2);white-space:nowrap;">🎙 Áudio gravado:</span>
+            ${audioLink
+              ? `<div class="audio-link-display"><a href="${audioLink}" target="_blank">▶ Ouvir / baixar áudio</a></div>
+                 <button class="audio-save-btn" style="background:var(--bg2);color:var(--text2);border:1px solid var(--border2);" onclick="editAudioLink('${id}')">✏️ Alterar</button>`
+              : `<input class="audio-link-input" type="url" id="audio-${id}" placeholder="Cole o link do áudio (Drive, Dropbox…)" value="${audioLink}">
+                 <button class="audio-save-btn" onclick="saveAudioLink('${id}')">Salvar link</button>`
+            }
+          </div>
+        </div>
+      `;
+    }).join('');
+  }
+
+  function saveAudioLink(id) {
+    const input = document.getElementById(`audio-${id}`);
+    if (!input) return;
+    getSD(id).audioLink = input.value.trim();
+    saveScriptData();
+    renderApprovedTab();
+  }
+
+  function editAudioLink(id) {
+    getSD(id).audioLink = '';
+    saveScriptData();
+    renderApprovedTab();
+  }
+
+  // ── HOOK DEFAULTS ─────────────────────────────────────────
+  const hookDefaults = {
+    pt: [
+      '"Se você sofreu um acidente nos EUA, para TUDO e vê isso."',
+      '"Você sabia que imigrante TAMBÉM tem direito a indenização?"',
+      '"O que a maioria das pessoas faz errado depois de um acidente de carro"',
+      '"Eu era imigrante sem documentos e recebi indenização. Veja como."',
+      '"3 coisas que o seguro não quer que você saiba"',
+      '"Isso aconteceu com um cliente nosso semana passada..."',
+      '"Quantos anos você mora nos EUA e nunca soube desse direito?"',
+      '"ERRO FATAL que pode zerar sua indenização:"',
+    ],
+    en: [
+      '"If you were injured in Massachusetts, stop and watch this."',
+      '"Most immigrants don\'t know they can sue — even without a green card."',
+      '"The biggest mistake people make after a car accident"',
+      '"3 things the insurance company hopes you never find out"',
+      '"This happened to one of our clients last week..."',
+      '"You were hurt at work. Here\'s exactly what to do next."',
+      '"ICE knocked on their door. Here\'s what we told them to do."',
+      '"The one call that can change everything after an accident"',
+    ]
+  };
+
+  let hookData = { pt: {}, en: {} };
+  try { hookData = JSON.parse(localStorage.getItem('ch_hooks') || '{"pt":{},"en":{}}'); } catch(e) {}
+
+  function saveHooks() {
+    try { localStorage.setItem('ch_hooks', JSON.stringify(hookData)); } catch(e) {}
+  }
+
+  function loadSavedHooks() {
+    ['pt','en'].forEach(lang => {
+      const cells = document.querySelectorAll(`[data-hook-id^="${lang}-"]`);
+      cells.forEach(cell => {
+        const id = cell.dataset.hookId;
+        if (hookData[lang][id] !== undefined) cell.textContent = hookData[lang][id];
+        cell.addEventListener('input', () => {
+          hookData[lang][id] = cell.textContent;
+          saveHooks();
+          cell.classList.add('saved-flash');
+          setTimeout(() => cell.classList.remove('saved-flash'), 600);
+        });
+        cell.addEventListener('keydown', e => { if (e.key === 'Enter') { e.preventDefault(); cell.blur(); } });
+      });
+    });
+  }
+
+  function addHookRow(lang) {
+    const tbody = document.getElementById(`hooks-${lang}-body`);
+    const rows = tbody.querySelectorAll('tr');
+    const newIdx = rows.length;
+    const id = `${lang}-${newIdx}`;
+    const placeholder = lang === 'pt' ? '"Escreva seu gancho aqui..."' : '"Write your hook here..."';
+    const tr = document.createElement('tr');
+    tr.innerHTML = `
+      <td class="hook-cell" contenteditable="true" data-hook-id="${id}">${placeholder}</td>
+      <td contenteditable="true" style="color:var(--text2);font-size:0.82rem;">${lang === 'pt' ? 'Descreva por que funciona' : 'Describe why it works'}</td>
+      <td contenteditable="true" style="font-size:0.82rem;">Reel</td>
+    `;
+    tbody.appendChild(tr);
+    const cell = tr.querySelector('.hook-cell');
+    hookData[lang][id] = placeholder;
+    saveHooks();
+    cell.addEventListener('input', () => {
+      hookData[lang][id] = cell.textContent;
+      saveHooks();
+    });
+    cell.addEventListener('keydown', e => { if (e.key === 'Enter') { e.preventDefault(); cell.blur(); } });
+    cell.focus();
+    const range = document.createRange();
+    range.selectNodeContents(cell);
+    window.getSelection().removeAllRanges();
+    window.getSelection().addRange(range);
+  }
+
+  function resetHooks(lang) {
+    const label = lang === 'pt' ? 'Isso vai restaurar os ganchos originais. Continuar?' : 'This will restore the original hooks. Continue?';
+    if (!confirm(label)) return;
+    hookData[lang] = {};
+    saveHooks();
+    const cells = document.querySelectorAll(`[data-hook-id^="${lang}-"]`);
+    cells.forEach((cell, i) => {
+      if (hookDefaults[lang][i] !== undefined) cell.textContent = hookDefaults[lang][i];
+    });
+    // Remove added rows beyond defaults
+    const tbody = document.getElementById(`hooks-${lang}-body`);
+    const rows = Array.from(tbody.querySelectorAll('tr'));
+    rows.forEach((row, i) => { if (i >= hookDefaults[lang].length) row.remove(); });
+  }
+
+  // ── CALENDAR ──────────────────────────────────────────────
+  const posts = {
+    week1: [
+      { id:'w1d1', day:'SEG · Dia 01', fmt:'reel-pt', fmtLabel:'🎬 Reel PT', title:'Acidente de carro — o que fazer nos primeiros 10 min', hook:'"Se você sofreu um acidente em MA, os próximos 10 minutos definem se você recebe indenização ou zero."' },
+      { id:'w1d2', day:'QUA · Dia 03', fmt:'carr-en', fmtLabel:'📋 Carrossel EN', title:'3 mistakes that DESTROY your injury claim', hook:'"The biggest mistake people make after a car accident"' },
+      { id:'w1d3', day:'QUI · Dia 04', fmt:'reel-pt', fmtLabel:'🎬 Reel PT', title:'Você não precisa ser cidadão para processar — a verdade', hook:'"Imigrante também tem direito a indenização nos EUA. Aqui está o porquê."' },
+      { id:'w1d4', day:'SEX · Dia 05', fmt:'carr-pt', fmtLabel:'📋 Carrossel PT', title:'3 erros que destroem sua chance de indenização', hook:'"3 coisas que o seguro espera que você faça errado."' },
+    ],
+    week2: [
+      { id:'w2d1', day:'SEG · Dia 08', fmt:'reel-en', fmtLabel:'🎬 Reel EN', title:'Immigrant rights myth-busting — you CAN sue', hook:'"Most immigrants don\'t know they can file a personal injury claim — even without a green card."' },
+      { id:'w2d2', day:'QUA · Dia 10', fmt:'carr-pt', fmtLabel:'📋 Carrossel PT', title:'Prazo para entrar com ação em MA — você tem 3 anos', hook:'"Você sabia que tem um prazo limite para processar depois de um acidente? Em MA são 3 anos — e o relógio já está correndo."' },
+      { id:'w2d3', day:'QUI · Dia 11', fmt:'reel-pt', fmtLabel:'🎬 Reel PT', title:'Só cobramos se você ganhar — como funciona o contingency fee', hook:'"Sem dinheiro pra contratar advogado? Na Castel & Hall você só paga se a gente ganhar o seu caso."' },
+      { id:'w2d4', day:'SEX · Dia 12', fmt:'carr-en', fmtLabel:'📋 Carrossel EN', title:'You only have 3 years to file — statute of limitations MA', hook:'"Did you know there\'s a deadline to sue after an accident in Massachusetts? Most people miss it."' },
+    ],
+    week3: [
+      { id:'w3d1', day:'SEG · Dia 15', fmt:'reel-en', fmtLabel:'🎬 Reel EN', title:'No fee unless we win — how contingency works', hook:'"You were hurt. You don\'t have money for a lawyer. Here\'s what you need to know."' },
+      { id:'w3d2', day:'QUA · Dia 17', fmt:'carr-pt', fmtLabel:'📋 Carrossel PT', title:'Documentos que você PRECISA ter para ganhar seu caso', hook:'"Esses 7 documentos podem fazer a diferença entre ganhar e perder sua indenização."' },
+      { id:'w3d3', day:'QUI · Dia 18', fmt:'reel-pt', fmtLabel:'🎬 Reel PT', title:'Por que a Castel & Hall — advogados que falam sua língua', hook:'"Vou te contar por que fundei um escritório que atende em português, espanhol, crioulo e inglês."' },
+      { id:'w3d4', day:'SEX · Dia 19', fmt:'carr-en', fmtLabel:'📋 Carrossel EN', title:'Documents you NEED after a car accident in MA', hook:'"These are the documents that can make or break your personal injury case."' },
+    ],
+    week4: [
+      { id:'w4d1', day:'SEG · Dia 22', fmt:'reel-pt', fmtLabel:'🎬 Reel PT', title:'Slip & fall — quando o dono do lugar é responsável', hook:'"Caiu em um supermercado, estacionamento ou escada? Você pode ter direito a indenização."' },
+      { id:'w4d2', day:'QUA · Dia 24', fmt:'carr-pt', fmtLabel:'📋 Carrossel PT', title:'Imigração: mitos e verdades que todo imigrante precisa saber', hook:'"5 coisas que você acredita sobre imigração que são mentira."' },
+      { id:'w4d3', day:'QUI · Dia 25', fmt:'reel-en', fmtLabel:'🎬 Reel EN', title:'ICE at your door — know your rights right now', hook:'"If ICE knocks on your door, here\'s exactly what to do and what NOT to say."' },
+      { id:'w4d4', day:'SEX · Dia 26', fmt:'carr-en', fmtLabel:'📋 Carrossel EN', title:'Why Castel & Hall — multilingual, community-first law firm', hook:'"We speak your language. Literally. English, Portuguese, Spanish, Haitian Creole."' },
+    ]
+  };
+
+  const statusLabels = { pending:'⏳ Pendente', production:'🎬 Em produção', review:'👀 Em revisão', ready:'✅ Pronto', posted:'📤 Postado' };
+  const statusColors = { pending:'#8a97aa', production:'#c96a00', review:'#1a4fa8', ready:'#1e4976', posted:'#c0182f' };
+  const fmtClass = { 'reel-pt':'fmt-reel-pt','reel-en':'fmt-reel-en','carr-pt':'fmt-carr-pt','carr-en':'fmt-carr-en' };
+
+  let saved = {};
+  try { saved = JSON.parse(localStorage.getItem('ch_calendar') || '{}'); } catch(e) {}
+
+  let currentPostId = null;
+  let selectedStatus = 'pending';
+
+  function getS(id) { return saved[id] || { link:'', note:'', status:'pending' }; }
+
+  function renderWeek(weekKey, containerId) {
+    const container = document.getElementById(containerId);
+    if (!container) return;
+    container.innerHTML = '';
+    posts[weekKey].forEach(p => {
+      const s = getS(p.id);
+      const hasFile = !!s.link;
+      const row = document.createElement('div');
+      row.className = 'post-row' + (hasFile ? ' has-file' : '');
+      row.onclick = () => openModal(p.id);
+      row.innerHTML = `
+        <div class="post-day-badge">${p.day.split('·')[0].trim()}<br><span style="color:#ffffff;font-size:0.6rem">${p.day.split('·')[1]?.trim()||''}</span></div>
+        <span class="post-row-format ${fmtClass[p.fmt]}">${p.fmtLabel}</span>
+        <div style="flex:1;min-width:0;">
+          <div class="post-row-title">${p.title}</div>
+          <div class="post-row-hook">${p.hook}</div>
+        </div>
+        <div style="display:flex;flex-direction:column;align-items:flex-end;gap:0.3rem;">
+          <div class="post-row-status" style="color:${statusColors[s.status]}">${statusLabels[s.status]}</div>
+          ${hasFile ? `<a href="${s.link}" target="_blank" onclick="event.stopPropagation()" style="font-size:0.7rem;color:#4a7fd5;text-decoration:none;font-family:'DM Mono',monospace;">📎 ver arquivo</a>` : '<span class="post-row-link-icon" style="color:#8a9ab5;font-size:0.75rem;">📎 sem arquivo</span>'}
+        </div>
+      `;
+      container.appendChild(row);
+    });
+  }
+
+  function renderAll() {
+    renderWeek('week1','posts-week1');
+    renderWeek('week2','posts-week2');
+    renderWeek('week3','posts-week3');
+    renderWeek('week4','posts-week4');
+  }
+
+  function findPost(id) {
+    for (const wk of Object.values(posts)) {
+      const p = wk.find(x => x.id === id);
+      if (p) return p;
+    }
+    return null;
+  }
+
+  function openModal(id) {
+    currentPostId = id;
+    const p = findPost(id);
+    const s = getS(id);
+    document.getElementById('modal-week-label').textContent = p.day;
+    document.getElementById('modal-format-label').textContent = p.fmtLabel;
+    document.getElementById('modal-title').textContent = p.title;
+    document.getElementById('modal-hook').textContent = 'Gancho: ' + p.hook;
+    document.getElementById('modal-link').value = s.link || '';
+    document.getElementById('modal-note').value = s.note || '';
+    selectedStatus = s.status || 'pending';
+    document.querySelectorAll('.status-opt').forEach(b => {
+      b.classList.toggle('selected', b.dataset.val === selectedStatus);
+    });
+    const modal = document.getElementById('fileModal');
+    modal.style.display = 'flex';
+    setTimeout(() => modal.querySelector('div').style.opacity = 1, 10);
+  }
+
+  function closeModal() {
+    document.getElementById('fileModal').style.display = 'none';
+    currentPostId = null;
+  }
+
+  function selectStatus(btn) {
+    selectedStatus = btn.dataset.val;
+    document.querySelectorAll('.status-opt').forEach(b => b.classList.remove('selected'));
+    btn.classList.add('selected');
+  }
+
+  function saveModal() {
+    if (!currentPostId) return;
+    saved[currentPostId] = {
+      link: document.getElementById('modal-link').value.trim(),
+      note: document.getElementById('modal-note').value.trim(),
+      status: selectedStatus
+    };
+    try { localStorage.setItem('ch_calendar', JSON.stringify(saved)); } catch(e) {}
+    closeModal();
+    renderAll();
+  }
+
+  document.getElementById('fileModal').addEventListener('click', function(e) {
+    if (e.target === this) closeModal();
+  });
+
+  // ── LANG TOGGLES ──────────────────────────────────────────
+  function showLang(lang) {
+    document.getElementById('lang-pt').classList.toggle('active', lang === 'pt');
+    document.getElementById('lang-en').classList.toggle('active', lang === 'en');
+    document.querySelectorAll('#pillars .lang-btn').forEach((b,i) => b.classList.toggle('active',(i===0&&lang==='pt')||(i===1&&lang==='en')));
+  }
+  function showHookLang(id) {
+    document.getElementById('hook-hpt').classList.toggle('active', id==='hpt');
+    document.getElementById('hook-hen').classList.toggle('active', id==='hen');
+    document.querySelectorAll('#hooks .lang-btn').forEach((b,i) => b.classList.toggle('active',(i===0&&id==='hpt')||(i===1&&id==='hen')));
+  }
+  function showScriptLang(id) {
+    document.getElementById('script-spt').classList.toggle('active', id==='spt');
+    document.getElementById('script-sen').classList.toggle('active', id==='sen');
+    document.querySelectorAll('#scripts .lang-btn').forEach((b,i) => b.classList.toggle('active',(i===0&&id==='spt')||(i===1&&id==='sen')));
+  }
+
+  // initial render when calendar tab visible
+  window.addEventListener('load', () => {
+    loadSavedHooks();
+    initScripts();
+    applyRoleRestrictions();
+    if (document.getElementById('calendar').classList.contains('active')) renderAll();
+  });
+
+  // ── LOGOUT ────────────────────────────────────────────────
+  function doLogout() {
+    sessionStorage.removeItem('ch_session');
+    window.location.href = 'login.html';
+  }
+
+  // ── ROLE ENFORCEMENT ──────────────────────────────────────
+  function applyRoleRestrictions() {
+    const role = window.__chRole || 'reviewer';
+    const user = window.__chUser || '?';
+
+    // Show user badge in header
+    const logoP = document.querySelector('.logo-area p');
+    if (logoP) logoP.textContent = `Strategy Kit · ${user} (${role})`;
+
+    if (role === 'reviewer') {
+      // Disable all contenteditable fields except feedback textareas
+      document.querySelectorAll('[contenteditable="true"]').forEach(el => {
+        if (!el.classList.contains('feedback-input')) {
+          el.contentEditable = 'false';
+          el.style.cursor = 'default';
+          el.title = 'Apenas admins podem editar este campo';
+        }
+      });
+      // Hide "add hook" and "reset" buttons
+      document.querySelectorAll('[onclick*="addHookRow"], [onclick*="resetHooks"]').forEach(b => {
+        b.style.display = 'none';
+      });
+      // Show reviewer notice
+      const notice = document.createElement('div');
+      notice.className = 'alert';
+      notice.style.cssText = 'margin:0 0 1.5rem;background:#dce8fb;border-color:rgba(26,79,168,0.2);border-left-color:#1a4fa8;color:#1a3460;';
+      notice.innerHTML = '<strong>Modo revisão:</strong> Você pode comentar e aprovar roteiros e ganchos, mas não editar o conteúdo. Fale com o admin para solicitar alterações.';
+      const main = document.querySelector('main');
+      if (main) main.insertBefore(notice, main.firstChild);
+    }
+  }
+
+  // ── SHOW TAB ──────────────────────────────────────────────
+  function showTab(id) {
+    document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
+    document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+    document.getElementById(id).classList.add('active');
+    event.target.classList.add('active');
+    document.querySelectorAll('.lang-content').forEach(l => l.classList.remove('active'));
+    document.querySelectorAll('.lang-btn').forEach(b => b.classList.remove('active'));
+    const firstContent = document.querySelectorAll('#' + id + ' .lang-content');
+    if (firstContent.length) firstContent[0].classList.add('active');
+    const firstBtn = document.querySelectorAll('#' + id + ' .lang-btn');
+    if (firstBtn.length) firstBtn[0].classList.add('active');
+    if (id === 'calendar') renderAll();
+    if (id === 'approved') renderApprovedTab();
+  }
+</script>
+</body>
+</html>

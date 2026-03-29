@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Castel & Hall — Acesso</title>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body { font-family:'Montserrat',sans-serif; background:#0e1f3d; min-height:100vh; display:flex; align-items:center; justify-content:center; padding:1.5rem; }
+  .card { background:#fff; border-radius:14px; padding:2.5rem 2rem; width:100%; max-width:380px; box-shadow:0 20px 60px rgba(14,31,61,0.35); }
+  .logo { text-align:center; margin-bottom:2rem; }
+  .logo h1 { font-size:1.15rem; font-weight:800; color:#0e1f3d; text-transform:uppercase; letter-spacing:0.02em; }
+  .logo h1 span { color:#c0182f; }
+  .logo p { font-size:0.68rem; color:#8a97aa; font-family:'JetBrains Mono',monospace; letter-spacing:0.08em; text-transform:uppercase; margin-top:0.3rem; }
+  hr { border:none; border-top:1px solid #ebeef3; margin:0 0 1.8rem; }
+  label { display:block; font-size:0.7rem; font-weight:700; color:#4a5568; text-transform:uppercase; letter-spacing:0.07em; margin-bottom:0.35rem; }
+  input { width:100%; background:#f4f6f9; border:1px solid #dde2ea; border-radius:8px; padding:0.75rem 1rem; font-size:0.88rem; font-family:'Montserrat',sans-serif; color:#0e1f3d; outline:none; transition:border-color 0.15s,background 0.15s; margin-bottom:1rem; }
+  input:focus { border-color:#0e1f3d; background:#fff; }
+  input[type="password"] { letter-spacing:0.1em; }
+  .btn { width:100%; background:#0e1f3d; color:#fff; border:none; border-radius:8px; padding:0.85rem; font-size:0.88rem; font-weight:700; font-family:'Montserrat',sans-serif; cursor:pointer; transition:background 0.18s; margin-top:0.4rem; }
+  .btn:hover { background:#c0182f; }
+  .error { background:#fde8eb; border:1px solid rgba(192,24,47,0.2); border-left:3px solid #c0182f; border-radius:6px; padding:0.6rem 0.9rem; font-size:0.8rem; color:#7a0e1e; margin-bottom:1rem; display:none; }
+  .footer { text-align:center; margin-top:1.5rem; font-size:0.65rem; color:#8a97aa; font-family:'JetBrains Mono',monospace; letter-spacing:0.05em; }
+</style>
+</head>
+<body>
+<div class="card">
+  <div class="logo">
+    <h1>Castel <span>&</span> Hall, LLP</h1>
+    <p>Strategy Kit &middot; Acesso Restrito</p>
+  </div>
+  <hr>
+  <div class="error" id="error-msg">Usuário ou senha incorretos.</div>
+  <label for="username">Usuário</label>
+  <input type="text" id="username" placeholder="seu usuário" autocomplete="username" spellcheck="false">
+  <label for="password">Senha</label>
+  <input type="password" id="password" placeholder="••••••••" autocomplete="current-password">
+  <button class="btn" onclick="doLogin()">Entrar</button>
+  <div class="footer">520agency.com &middot; acesso autorizado apenas</div>
+</div>
+<script>
+  const USERS = [
+    { user: 'helena', hash: 'd33e4992aea6de4ccdc9b8947c56f8578b329d8759cf638d2ea827bcaa9f6c69', role: 'admin' },
+    { user: 'castel', hash: '04b10b1ea8a3db83aa866819302939f8784264a53c6415111579c03c32e46452', role: 'reviewer' },
+  ];
+
+  try {
+    const s = JSON.parse(sessionStorage.getItem('ch_session') || 'null');
+    if (s && s.user && s.role) window.location.href = 'app.html';
+  } catch(e) {}
+
+  async function sha256(str) {
+    const buf = await crypto.subtle.digest('SHA-256', new TextEncoder().encode(str));
+    return Array.from(new Uint8Array(buf)).map(b => b.toString(16).padStart(2,'0')).join('');
+  }
+
+  async function doLogin() {
+    const user = document.getElementById('username').value.trim().toLowerCase();
+    const pass = document.getElementById('password').value;
+    if (!user || !pass) return;
+    const hash = await sha256(pass);
+    const found = USERS.find(u => u.user === user && u.hash === hash);
+    if (found) {
+      sessionStorage.setItem('ch_session', JSON.stringify({ user: found.user, role: found.role }));
+      window.location.href = 'app.html';
+    } else {
+      const err = document.getElementById('error-msg');
+      err.style.display = 'block';
+      document.getElementById('password').value = '';
+      document.getElementById('password').focus();
+      setTimeout(() => err.style.display = 'none', 4000);
+    }
+  }
+
+  document.addEventListener('keydown', e => { if (e.key === 'Enter') doLogin(); });
+</script>
+</body>
+</html>
